@@ -30,6 +30,22 @@ body, html {
   
   
   
+<<<<<<< HEAD
+=======
+  .button {
+    background-color: white;
+  color: black;
+  border: 2px solid #294b6b; /* Green */
+  transition-duration: 0.4s;
+  Border-radius: 12px;
+  }
+
+  .button:hover {
+    background-color: #294b6b; /* Green */
+    color: white;
+  }
+
+>>>>>>> 535552f5bc5bab43ff5c6e42859802132e19aa00
   .navbar {
 	background-image: linear-gradient(to right, #0d4172, #3b2c05);
 	padding: 15px;

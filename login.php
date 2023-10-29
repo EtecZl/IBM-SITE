@@ -1,3 +1,4 @@
+
 <?php
 
 
@@ -159,6 +160,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   
   <body>
 <!--Plugin de Ver Libras-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/CSS/login.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+        <!--Plugin de Ver Libras-->
+
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -170,6 +180,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
   <!--fim do Ver Libras-->
+
   <div class="container d-flex justify-content-center align-items-center">
     
         <div class="row">
@@ -216,4 +227,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 </body>
 </html>
+
 

@@ -1,4 +1,5 @@
 <?php
+
 // Incluir arquivo de configuração
 require_once "includes/conexao.php";
  

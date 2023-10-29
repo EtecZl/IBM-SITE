@@ -11,4 +11,10 @@ btnSignin.addEventListener("click", function () {
 
 btnSignup.addEventListener("click", function () {
     body.className = "sign-up-js";
+<<<<<<< HEAD
 });
+=======
+})
+
+
+>>>>>>> 535552f5bc5bab43ff5c6e42859802132e19aa00

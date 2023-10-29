@@ -4,8 +4,11 @@ body, html {
   padding: 0;
   height: 100%;
   width: 100%;
+<<<<<<< HEAD
   overflow-x: hidden;
   overflow-y: auto;
+=======
+>>>>>>> 535552f5bc5bab43ff5c6e42859802132e19aa00
 }
 * {
   font-family: 'Lato', sans-serif;

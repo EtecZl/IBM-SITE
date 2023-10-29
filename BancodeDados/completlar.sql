@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Out-2023 às 20:25
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.0.13
+-- Tempo de geração: 28/10/2023 às 23:38
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -17,10 +17,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-
-
-CREATE DATABASE completlar;
-use completlar;
 --
 -- Banco de dados: `completlar`
 --
@@ -28,52 +24,38 @@ use completlar;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cadastro`
+-- Estrutura para tabela `cadastro`
 --
 
 CREATE TABLE `cadastro` (
   `IdCliente` int(11) NOT NULL,
   `Nome` varchar(60) NOT NULL,
-  `Email` varchar(90) CHARACTER SET latin1 NOT NULL,
+  `Email` varchar(90) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `CEP` varchar(15) NOT NULL,
-  `Senha` varchar(20) CHARACTER SET latin1 NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `Senha` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
-CREATE TABLE `cliente` (
-  `IdCliente` int(11) NOT NULL,
-  `Nome` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `Email` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `RG` varchar(30) CHARACTER SET latin1 NOT NULL,
-  `DataNascimento` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `cliente`
---
-
-INSERT INTO `cliente` (`IdCliente`, `Nome`, `Email`, `RG`, `DataNascimento`) VALUES
-(1, 'Joao pedro', 'aaa@gmail.com', '111.111.111-11', '2023-10-10');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `loginadm`
+-- Estrutura para tabela `loginadm`
 --
 
 CREATE TABLE `loginadm` (
   `Id` int(11) NOT NULL,
-  `Email` varchar(60) CHARACTER SET latin1 NOT NULL,
-  `Senha` varchar(30) CHARACTER SET latin1 NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `Email` varchar(60) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `Senha` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `loginadm`
+-- Despejando dados para a tabela `loginadm`
 --
 
 INSERT INTO `loginadm` (`Id`, `Email`, `Senha`) VALUES
@@ -86,7 +68,7 @@ INSERT INTO `loginadm` (`Id`, `Email`, `Senha`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `loginclientes`
+-- Estrutura para tabela `loginclientes`
 --
 
 CREATE TABLE `loginclientes` (
@@ -94,60 +76,85 @@ CREATE TABLE `loginclientes` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `loginclientes`
+--
+
+INSERT INTO `loginclientes` (`id`, `username`, `password`, `created_at`) VALUES
+(1, 'gabriel', '$2y$10$mB4/VHgQ9GY5EFlPpUZEMuxbbBSYe7lhzz./bAq1TqoDbN1A0GGgi', '2023-10-28 14:52:33');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produtos`
+-- Estrutura para tabela `produtos`
 --
 
 CREATE TABLE `produtos` (
-  `IdProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `IdProduto` int(11) NOT NULL,
   `nome` varchar(255) NOT NULL,
   `caminho_imagem` varchar(255) NOT NULL,
   `descricao_imagem` varchar(70) NOT NULL,
-  `preco` varchar(70) NOT NULL,
-  PRIMARY KEY (`IdProduto`)
+  `preco` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `produtos`
+--
 
-INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');
-INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');INSERT INTO `produtos` (`nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES ('Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');
+INSERT INTO `produtos` (`IdProduto`, `nome`, `caminho_imagem`, `descricao_imagem`, `preco`) VALUES
+(1, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(2, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(3, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(4, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(5, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(6, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(7, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(8, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(9, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(10, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(11, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(12, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99'),
+(13, 'Armario', 'assets/Imagens/Produtos/Armario-Escritorio.jpg', 'Armario confortável para sua sala de estar', '999.99');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cadastro`
+-- Índices de tabela `cadastro`
 --
 ALTER TABLE `cadastro`
   ADD PRIMARY KEY (`IdCliente`);
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`IdCliente`);
 
 --
--- Índices para tabela `loginadm`
+-- Índices de tabela `loginadm`
 --
 ALTER TABLE `loginadm`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Índices para tabela `loginclientes`
+-- Índices de tabela `loginclientes`
 --
 ALTER TABLE `loginclientes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
-
+--
+-- Índices de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  ADD PRIMARY KEY (`IdProduto`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -172,7 +179,13 @@ ALTER TABLE `loginadm`
 -- AUTO_INCREMENT de tabela `loginclientes`
 --
 ALTER TABLE `loginclientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `produtos`
+--
+ALTER TABLE `produtos`
+  MODIFY `IdProduto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,19 +1,4 @@
 
-<?php
-// Seção PHP para inicializar ou recuperar o carrinho
-session_start();
-
-if (!isset($_SESSION['carrinho'])) {
-    $_SESSION['carrinho'] = [];
-}
-
-if (isset($_POST['adicionar_carrinho'])) {
-    $produtoNome = $_POST['produto_nome'];
-    $produtoPreco = $_POST['produto_preco'];
-    $carrinhoItem = ['nome' => $produtoNome, 'preco' => $produtoPreco];
-    $_SESSION['carrinho'][] = $carrinhoItem;
-}
-?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -54,7 +39,6 @@ if (isset($_POST['adicionar_carrinho'])) {
   </head>
 <body>
 
-
     <!-- Plugin de Ver Libras -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
@@ -75,8 +59,76 @@ if (isset($_POST['adicionar_carrinho'])) {
 
 
 
+<div class="container mt-5">
+<?php
+// Conecte-se ao banco de dados
+include 'includes/conexao.php';
+$conn = new Conectar();
+
+// Verifique se a variável de pesquisa está definida e não está vazia
+if (isset($_POST['pesquisar']) && !empty($_POST['pesquisar'])) {
+    // Recupere a palavra-chave da barra de pesquisa
+    $pesquisar = $_POST['pesquisar'];
+
+    // Prepare a consulta SQL com a pesquisa aproximada
+    $query = "SELECT * FROM produtos WHERE nome LIKE :pesquisar OR descricao_imagem LIKE :pesquisar";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':pesquisar', "%$pesquisar%", PDO::PARAM_STR);
+    $stmt->execute();
+    
+    // Inicialize a contagem de colunas
+    $count = 0;
+
+    // Exiba os resultados em cards
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        if ($count % 3 == 0) {
+            // Abre uma nova linha a cada 3 produtos
+            echo '<div class="row">';
+        }
+        
+        echo '<div class="col-md-4">';
+        echo '<div class="card">';
+        echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top" alt="' . $row['nome'] . '">';
+        echo '<div class="card-body">';
+        echo '<h5 class="card-title">' . $row['nome'] . '</h5>';
+        echo '<p class="card-text">' . $row['descricao_imagem'] . '</p>';
+        echo '<p class="card-price">$' . $row['preco'] . '</p>';
+        echo '<form method="post" action="adiciona_ao_carrinho.php">';
+        echo '<input type="hidden" name="product_id" value="' . $row['id'] . '">';
+        echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
+        echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
+        echo '<button class="btn btn-primary" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>';
+        echo '</form>';
+        echo '<button class="btn btn-success">Comprar</button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+
+        if ($count % 3 == 2) {
+            // Fecha a linha a cada 3 produtos
+            echo '</div>';
+        }
+
+        $count++;
+    }
+
+    // Fecha a última linha, se necessário
+    if ($count % 3 != 0) {
+        echo '</div>';
+    }
+} else {
+    // Exiba uma mensagem se a pesquisa estiver vazia
+    echo '<p>Nenhum resultado encontrado.</p>';
+}
+
+// Feche o contêiner Bootstrap
+echo '</div>';
+?>
+
 
 <div class="container mt-5">
+
+
 <?php
 include 'includes/conexao.php';
  $conn = new Conectar();
@@ -103,7 +155,7 @@ if ($result) {
         echo "<p class='card-text'>R$ {$row["preco"]}</p>";
         echo "<div class='d-grid gap-2'>";
         echo "<a class='btn btn-primary' href='Comprar.php?produto={$row["IdProduto"]}'>Comprar</a>";
-        echo "<button class='btn btn-success' onclick='addToCart(\"{$row["nome"]}\", {$row["preco"]})'>Adicionar ao Carrinho</button>";
+        echo '<button class="btn btn-primary " href="obter_carrinho.php"> Adicionar ao Carrinho</button>';
         // Star rating (adicionar o código para estrelas, se necessário)
         echo "</div>";
         echo "</div>";
@@ -117,6 +169,7 @@ if ($result) {
 }
 ?>
 
+   
 
 </div>
 
@@ -130,130 +183,11 @@ if ($result) {
 
 
 
-    <h3><center>Móveis Adaptados</h3></center>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/Guarda-Roupa-Espelho.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Multiuso com Altura Regulável</h5>
-                        <p class="card-text">R$ 280,20</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="Comprar (16).html">Comprar</a>
-                            <!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                            <!-- Star rating -->
-                            <div class="star-rating">
-                                <input type="radio" name="rating1" value="5" id="rating1-5"><label for="rating1-5"></label>
-                                <input type="radio" name="rating1" value="4" id="rating1-4"><label for="rating1-4"></label>
-                                <input type="radio" name="rating1" value="3" id="rating1-3"><label for="rating1-3"></label>
-                                <input type="radio" name="rating1" value="2" id="rating1-2"><label for="rating1-2"></label>
-                                <input type="radio" name="rating1" value="1" id="rating1-1"><label for="rating1-1"></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/Guarda-Roupa-Casal.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Escolar com 3 Alturas</h5>
-                        <p class="card-text">R$ 550,00</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="ComprarMesaEscolar3Alt.html">Comprar</a>
-                            <!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/sofa-slim.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Escolar Adaptada</h5>
-                        <p class="card-text">R$ 980,00</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="ComprarMesaEscolarAdap.html">Comprar</a>
-<!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h3><center>Móveis Adaptados</h3></center>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/mesa-escritório.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Multiuso com Altura Regulável</h5>
-                        <p class="card-text">R$ 280,20</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="Comprar (16).html">Comprar</a>
-                           <!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                            <!-- Star rating -->
-                            <div class="star-rating">
-                                <input type="radio" name="rating1" value="5" id="rating1-5"><label for="rating1-5"></label>
-                                <input type="radio" name="rating1" value="4" id="rating1-4"><label for="rating1-4"></label>
-                                <input type="radio" name="rating1" value="3" id="rating1-3"><label for="rating1-3"></label>
-                                <input type="radio" name="rating1" value="2" id="rating1-2"><label for="rating1-2"></label>
-                                <input type="radio" name="rating1" value="1" id="rating1-1"><label for="rating1-1"></label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/Armario-Mesa-Dobravel.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Escolar com 3 Alturas</h5>
-                        <p class="card-text">R$ 550,00</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="ComprarMesaEscolar3Alt.html">Comprar</a>
-                          <!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card">
-                    <img src="assets/Imagens/Produtos/Mesa-Multiuso.jpg" class="card-img-top" alt="Cinque Terre">
-                    <div class="card-body">
-                        <h5 class="card-title">Mesa Escolar Adaptada</h5>
-                        <p class="card-text">R$ 980,00</p>
-                        <div class="d-grid gap-2">
-                            <a class="btn btn-primary" href="ComprarMesaEscolarAdap.html">Comprar</a>
-                         <!-- Botão do Carrinho -->
-<button id="carrinhoBtn" class="btn btn-primary">Carrinho</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
 
     <br><br>
   <?php include 'includes/footer.php'; ?>
   
-
 
 
 

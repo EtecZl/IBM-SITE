@@ -17,7 +17,7 @@
   
   <nav class="navbar navbar-expand-lg navbar-dark"> 
   <div class="container-fluid">
-    <a class="navbar-brand">
+  <a class="navbar-brand">
       <img src="assets/Imagens/Home/logo.png" alt="Logo" width="60" height="40" class="d-inline-block align-text-top">
       COMPLET<span class="lar">LAR</span>
     </a>
@@ -41,7 +41,10 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="produtos.php">Produtos Avulsos</a>
                         <a class="dropdown-item" href="#">Produtos Personalizados</a>
+
                         <a class="dropdown-item" href="orçamento.php"> Orçamento</a>
+
+                      
                     </div>
                 </li>
 
@@ -58,18 +61,25 @@
             </ul>
            
             <form class="form-inline" method="POST" action="produtos.php">
-         <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar produtos" aria-label="Pesquisar" name="pesquisa">
+         <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar produtos" aria-label="Pesquisar" name="pesquisar">
       <button class="btn btn-dark" type="submit" >Pesquisar</button>
+
+
     </form>
 
     
             <ul class="navbar-nav">
                 <li class="nav-item">
+
                     <a class="nav-link" href="login.php"><i class="bi bi-person"></i> login/cadastro </a>
                 </li>
-                <a class="nav-link" href="addToCart.php">
+                <a class="nav-link" href="obter_carrinho.php">
                     <i class="fa fa-shopping-cart cart-icon" data-count="0"></i> Carrinho
+
+                
                 </a>
+
+             
             </ul>
             
         </div>
@@ -78,58 +88,6 @@
   </div>
 </nav>
 
-<div class="container mt-5">
-        <h3>Itens no Carrinho</h3>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Preço</th>
-                </tr>
-            </thead>
-            <tbody id="carrinho-itens">
-                <!-- Aqui serão listados os itens do carrinho via JavaScript -->
-            </tbody>
-        </table>
-    </div>
-
-    <script>
-        function addToCart(nome, preco) {
-            // Função para adicionar itens ao carrinho
-            $.ajax({
-                type: 'POST',
-                url: 'adicionar_carrinho.php',
-                data: { produto_nome: nome, produto_preco: preco },
-                success: function(response) {
-                    alert('Produto adicionado ao carrinho!');
-                    updateCart();
-                },
-                error: function() {
-                    alert('Erro ao adicionar o produto ao carrinho.');
-                }
-            });
-        }
-
-        function updateCart() {
-            // Função para atualizar e exibir os itens no carrinho
-            $.ajax({
-                type: 'GET',
-                url: 'obter_carrinho.php',
-                success: function(response) {
-                    $('#carrinho-itens').html(response);
-                },
-                error: function() {
-                    alert('Erro ao obter o carrinho.');
-                }
-            });
-        }
-        
-        // Atualize o carrinho quando a página for carregada
-        $(document).ready(function() {
-            updateCart();
-        });
-    </script>
-
-
 </body>
 </html>
+

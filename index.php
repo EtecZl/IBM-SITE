@@ -186,7 +186,7 @@
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
                 <div class="card-body text-center">
-                    <i class="bi bi-clock" style="font-size: 48px; color: #28A745;"></i>
+                    <i class="bi bi-clock" style="font-size: 48px; color: #42423f;"></i>
                     <h5 class="card-title mt-4">Entrega Rápida
                  </h5>
                     <p class="card-text">Entrega rápida e confiável direto na sua porta.</p>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 28/10/2023 às 23:38
+-- Tempo de geração: 02/11/2023 às 20:32
 -- Versão do servidor: 10.4.28-MariaDB
 -- Versão do PHP: 8.0.28
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `completlar`
 --
+CREATE DATABASE  `completlar`;
+use  `completlar`;
 
 -- --------------------------------------------------------
 
@@ -41,6 +43,20 @@ CREATE TABLE `cadastro` (
 -- Estrutura para tabela `cliente`
 --
 
+CREATE TABLE `cliente` (
+  `IdCliente` int(11) NOT NULL,
+  `Nome` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `Email` varchar(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `RG` varchar(30) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `DataNascimento` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`IdCliente`, `Nome`, `Email`, `RG`, `DataNascimento`) VALUES
+(1, 'Joao pedro', 'aaa@gmail.com', '111.111.111-11', '2023-10-10');
 
 -- --------------------------------------------------------
 
@@ -75,15 +91,19 @@ CREATE TABLE `loginclientes` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
+  `created_at` datetime DEFAULT current_timestamp(),
+  `cep` varchar(70) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `telefone` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `loginclientes`
 --
 
-INSERT INTO `loginclientes` (`id`, `username`, `password`, `created_at`) VALUES
-(1, 'gabriel', '$2y$10$mB4/VHgQ9GY5EFlPpUZEMuxbbBSYe7lhzz./bAq1TqoDbN1A0GGgi', '2023-10-28 14:52:33');
+INSERT INTO `loginclientes` (`id`, `username`, `password`, `created_at`, `cep`, `email`, `telefone`) VALUES
+(1, 'gabriel', '$2y$10$mB4/VHgQ9GY5EFlPpUZEMuxbbBSYe7lhzz./bAq1TqoDbN1A0GGgi', '2023-10-28 14:52:33', '', '', ''),
+(2, 'samuelesofia', '$2y$10$VqKGnka.pMx/TE6TYsKxou5iqsOYRA0FMyR9n8ncYRzG63FZdEnYG', '2023-10-29 01:17:58', '12433546', 'SamueleSofia@gmail.com', '22121443');
 
 -- --------------------------------------------------------
 
@@ -121,6 +141,16 @@ INSERT INTO `produtos` (`IdProduto`, `nome`, `caminho_imagem`, `descricao_imagem
 --
 -- Índices para tabelas despejadas
 --
+
+
+CREATE TABLE carrinho (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    product_id INT,
+    quantidade INT,
+    FOREIGN KEY (user_id) REFERENCES cadastro(IdCliente),
+    FOREIGN KEY (product_id) REFERENCES produtos(IdProduto)
+);
 
 --
 -- Índices de tabela `cadastro`
@@ -179,7 +209,7 @@ ALTER TABLE `loginadm`
 -- AUTO_INCREMENT de tabela `loginclientes`
 --
 ALTER TABLE `loginclientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `produtos`

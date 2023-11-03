@@ -1,10 +1,12 @@
 <?php
 session_start();
 
+
+
 // Certifique-se de que o usuário esteja logado
 if (isset($_SESSION['username'])) {
     // Conecte-se ao banco de dados
-    require_once "includes/conexao.php";
+include "includes/conexao.php";
     $pdo = new Conectar();
     
     // Selecione as informações do usuário
@@ -77,7 +79,7 @@ if (isset($_SESSION['username'])) {
 
 
 <p>
-	<a href="reset_password.php" class="btn btn-warning">Redefina sua senha</a>
+	<a href="atualizar_informacoes.php" class="btn btn-warning">Atualize suas Informações</a>
 	<a href="logout.php" class="btn btn-danger ml-3">Sair da conta</a>
 </p>
 </body>

@@ -4,11 +4,10 @@ body, html {
   padding: 0;
   height: 100%;
   width: 100%;
-<<<<<<< HEAD
+
   overflow-x: hidden;
   overflow-y: auto;
-=======
->>>>>>> 535552f5bc5bab43ff5c6e42859802132e19aa00
+
 }
 * {
   font-family: 'Lato', sans-serif;
@@ -47,17 +46,19 @@ body, html {
 .navbar {
 
   color:#fff;
-  background-image: linear-gradient(to right, #0d4172, #3b2c05);
+  background-image: linear-gradient(to right, #03203a, #161001);
   min-height: 80px; /* Ajuste a altura conforme necessário */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
 }
+
 
 
 
 
 /* Estilize o botão de pesquisa */
 .form-control {
-  border-radius: 0; /* Remove o arredondamento do campo de pesquisa */
-  border-color: #ddd; /* Cor da borda do campo de pesquisa */
+  border-radius: 12px; /* Remove o arredondamento do campo de pesquisa */
+  border-color: #251010; /* Cor da borda do campo de pesquisa */
 }
 
 /* Estilize o botão de pesquisa quando estiver focado */
@@ -250,6 +251,17 @@ transition: opacity 0.8s ease; /* Velocidade e suavidade da animação */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
   
+}
+.card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 

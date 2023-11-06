@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
-                            header("location: MinhaConta.php");
+                       
                         } else {
                             $login_err = "Nome de usuário ou senha inválidos.";
                         }
@@ -103,6 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-md-6">
                 <h3>Bem-vindo de volta!</h3>
                 <h3>Complete sua casa com estilo</h3>
+                <p>Não tem uma conta?Inscreva-se agora</p>
+                <a href="cadastro.php" class="btn btn-secondary">Cadastre-se agora mesmo</a>.
             </div>
             <div class="col-md-6">
                 <?php
@@ -124,12 +126,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form-group">
                         <input type="submit" class="btn btn-primary" value="Entrar">
                     </div>
-                    <p>Não tem uma conta? <a href="cadastro.php" class="btn btn-secondary">Inscreva-se agora</a>.</p>
+               
                 </form>
             </div>
         </div>
     </div>
-
+<br><br>
     <?php include 'includes/footer.php'; ?>
 </body>
 </html>

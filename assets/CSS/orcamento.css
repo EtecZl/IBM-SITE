@@ -1,0 +1,41 @@
+.custom-modal {
+    background-color: #f0f0f0; /* Cor de fundo personalizada */
+  }
+
+  .custom-content {
+    border: 2px solid #007BFF; /* Borda personalizada */
+    border-radius: 10px; /* Borda arredondada */
+  }
+
+  .custom-header {
+    background-color: #007BFF; /* Cor de fundo do cabeçalho personalizada */
+  }
+
+  .custom-title {
+    color: #fff; /* Cor do título personalizada */
+  }
+
+  .custom-close {
+    color: #fff; /* Cor do botão Fechar personalizada */
+  }
+
+  .custom-input {
+    background-color: #fff; /* Cor de fundo do campo de entrada personalizada */
+  }
+
+  .custom-body {
+    padding: 20px; /* Espaçamento interno personalizado */
+  }
+
+  .custom-btn {
+    background-color: #007BFF; /* Cor de fundo do botão personalizada */
+    color: #fff; /* Cor do texto do botão personalizada */
+  }
+
+  .custom-label {
+    color: #007BFF; /* Cor do rótulo personalizada */
+  }
+
+  .custom-error {
+    color: #ff0000; /* Cor do texto de erro personalizada */
+  }

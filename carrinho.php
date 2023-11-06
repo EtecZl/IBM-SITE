@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Completlar - Sua Casa, Seu Estilo.</title>
-    <link lr rel="shortcut icon" href="assets/assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="assets/assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
+
     <!-- Google fonts Lato -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -118,6 +119,8 @@ include 'includes/header.php';
 include 'includes/conexao.php';
 $conn = new Conectar();
 
+
+// Verifique se o carrinho não está vazio e continue com seu código
 if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
     echo '<div class="container mt-5">';
     echo '<h1>Seu Carrinho de Compras</h1>';
@@ -129,6 +132,9 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
     echo '<tbody>';
 
     $total = 0;
+
+    // Inicialize um array para armazenar os detalhes do carrinho
+    $cart = array();
 
     foreach ($_SESSION['carrinho'] as $product_id => $product) {
         echo '<tr>';
@@ -154,8 +160,16 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
             echo '<td id="subtotal_' . $product_id . '">R$ ' . $subtotal . '</td>';
             echo '<td><a href="excluir_produto.php?produto_id=' . $product_id . '" class="btn btn-danger">Excluir</a></td>';
             $total += $subtotal;
-        } else {
 
+            // Crie um item do carrinho com os detalhes do produto
+            $item = array(
+                'nome' => $produto['nome'],
+                'imagem' => $produto['caminho_imagem'],
+                'preco' => $produto['preco'],
+                'quantidade' => $product['quantidade'],
+            );
+            $cart[] = $item; // Adicione os detalhes do produto ao array do carrinho
+        } else {
             echo '<td></td>';
             echo '<td></td>';
             echo '<td></td>';
@@ -165,18 +179,21 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
         echo '</tr>';
     }
 
+    // Codifique o carrinho como JSON
+    $cartJson = json_encode($cart);
+
+    // Armazene o JSON na sessão para que você possa acessá-lo em "checkout.php"
+    $_SESSION['cart_json'] = $cartJson;
+
     echo '</tbody>';
     echo '</table>';
-    
     echo '<p class="h4">Total: <span id="total">R$ ' . $total . '</span></p>';
     echo '<div class="row">';
     echo '<div class="col-md-6">';
-
     echo '</div>';
     echo '<div class="col-md-6 text-end">';
     echo '<a href="produtos.php" class="btn btn-success">Continuar Comprando</a>';
-   echo '<a class="btn btn-primary" href="checkout.php" style="opacity: 0.5;
-  filter: alpha(opacity=50)"> Proximo </a>';
+    echo '<a class="btn btn-primary" href="checkout.php" style="opacity: 0.5; filter: alpha(opacity=50)"> Proximo </a>';
     echo '</div>';
     echo '</div>';
     echo '</form>';
@@ -200,6 +217,18 @@ echo '<script>
         });
         totalElement.textContent = \'R$ \' + newTotal.toFixed(2);
     }
+    // Monta os dados do carrinho em um array
+$cart = array();
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $cart[] = $row;
+}
+
+// Codifique o carrinho como JSON
+$cartJson = json_encode($cart);
+
+// Imprima o JSON
+echo $cartJson;
 </script>';
 ?>
 

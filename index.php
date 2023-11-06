@@ -70,7 +70,7 @@
         </h3>
         <p>"Na nossa loja, transformamos seus sonhos em realidade, criando ambientes únicos e acolhedores."
         </p>
-        <a href="#" class="btn btn-primary">Saiba mais</a>
+        <a href="produtos.php" class="btn btn-primary">Saiba mais</a>
       </div>
     </div>
     <!-- Slide 2 -->
@@ -80,7 +80,7 @@
         <h3>Design Personalizado para Seu Lar</h3>
         <p>"Nossos móveis planejados são feitos sob medida para refletir sua personalidade e estilo de vida."
         </p>
-        <a href="#" class="btn btn-primary">Saiba mais</a>
+        <a href="produtos.php" class="btn btn-primary">Saiba mais</a>
       </div>
     </div>
     <!-- Slide 3 -->
@@ -90,7 +90,7 @@
         <h3>Móveis Planejados: Estilo e Funcionalidade</h3>
 <p>"Qualidade, beleza e funcionalidade se unem em cada peça que entregamos para você."
 </p>        
-<a href="#" class="btn btn-primary">Saiba mais</a>
+<a href="produtos.php" class="btn btn-primary">Saiba mais</a>
       </div>
     </div>
   </div>

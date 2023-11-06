@@ -18,6 +18,11 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card img {
+  max-width: 100%; /* Defina a largura máxima desejada */
+  height: auto; /* A altura será ajustada automaticamente para manter a proporção */
+}
+
 .card-title {
   font-weight: bold;
 }

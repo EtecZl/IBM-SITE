@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <!-- CSS do projeto -->
     <link rel="stylesheet" href="assets/CSS/main_produtos.css" />
+    <link rel="stylesheet" href="assets/CSS/categoria.css" />
 </head>
 <body>
     <!-- Plugin de Ver Libras -->
@@ -33,6 +34,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <?php include 'includes/header.php'; ?>
 
+<br><br>
+    <div class="container text-center mx-auto p-2">
+    <div class="row">
+        <div class="col-md-2 d-flex flex-column align-items-center mx-auto p-2">
+            <a href="produtosAdap.php">
+                <img src="assets/Imagens/Produtos/adaptados.jpg" class="img-fluid rounded-circle img-zoom" alt="Imagem 1">
+                <p>Adaptados</p>
+            </a>
+        </div>
+        <div class="col-md-2 d-flex flex-column align-items-center mx-auto p-2">
+            <a href="produtosSE.php">
+                <img src="assets/Imagens/Produtos/saladestarr.jpg" class="img-fluid rounded-circle img-zoom" alt="Imagem 1">
+                <p>Sala De Estar</p>
+            </a>
+        </div>
+        <div class="col-md-2 d-flex flex-column align-items-center mx-auto p-2">
+            <a href="produtosQ.php">
+                <img src="assets/Imagens/Produtos/quartos.jpg" class="img-fluid rounded-circle img-zoom" alt="Imagem 1">
+                <p>Quartos</p>
+            </a>
+        </div>
+        <div class="col-md-2 d-flex flex-column align-items-center mx-auto p-2">
+            <a href="produtosC.php">
+                <img src="assets/Imagens/Produtos/cozinhaa.jpg" class="img-fluid rounded-circle img-zoom" alt="Imagem 1">
+                <p>Cozinha</p>
+            </a>
+        </div>
+        <div class="col-md-2 d-flex flex-column align-items-center mx-auto p-2">
+            <a href="produtosE.php">
+                <img src="assets/Imagens/Produtos/escrito.jpg" class="img-fluid rounded-circle img-zoom" alt="Imagem 1">
+                <p>Escritório</p>
+            </a>
+        </div>
+    </div>
+</div><br>
     <div class="container mt-5">
         <?php
         include 'includes/conexao.php';

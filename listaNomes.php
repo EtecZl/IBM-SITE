@@ -1,6 +1,6 @@
 <?php
 
-$directory = 'assets/Imagens/Produtos';
+$directory = 'assets/Imagens/Produtos/Produtos_Main';
 $files = scandir($directory);
 
 if ($files !== false) {

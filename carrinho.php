@@ -216,21 +216,58 @@ echo '<script>
             newTotal += parseFloat(subtotal.textContent.split(\' \')[1]);
         });
         totalElement.textContent = \'R$ \' + newTotal.toFixed(2);
+
+
+        
     }
-    // Monta os dados do carrinho em um array
+    
 $cart = array();
 
 while ($row = mysqli_fetch_assoc($result)) {
     $cart[] = $row;
 }
 
-// Codifique o carrinho como JSON
-$cartJson = json_encode($cart);
-
-// Imprima o JSON
-echo $cartJson;
-</script>';
+$cartJson = json_encode($cart);'
 ?>
+
+
+
+<script>
+var cart = <?php echo $cartJson; ?>;
+var totalElement = document.querySelector("#total");
+
+function updateSubtotal(productId, productPrice) {
+    const quantityInput = document.querySelector("input[name='quantidade[" + productId + "]']");
+    const subtotalElement = document.querySelector("#subtotal_" + productId);
+    const quantity = parseInt(quantityInput.value, 10);
+    const subtotal = quantity * productPrice;
+
+    // Atualizar o elemento de subtotal
+    subtotalElement.textContent = "R$ " + subtotal.toFixed(2);
+
+    // Atualizar o carrinho no objeto cart
+    updateCart(productId, quantity);
+
+    // Recalcular o total a partir de todos os subtotais
+    let newTotal = 0;
+    document.querySelectorAll("[id^='subtotal_']").forEach(function (subtotal) {
+        newTotal += parseFloat(subtotal.textContent.split(' ')[1]);
+    });
+
+    // Atualizar o elemento total
+    totalElement.textContent = "R$ " + newTotal.toFixed(2);
+}
+
+function updateCart(productId, newQuantity) {
+    // Encontrar o produto no carrinho e atualizar a quantidade
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].productId == productId) {
+            cart[i].quantity = newQuantity;
+            break;
+        }
+    }
+}
+</script>
 
 
     <br><br>

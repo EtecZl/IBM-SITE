@@ -98,7 +98,7 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
 
-                    <a class="nav-link" href="login.php"><i class="bi bi-person"></i> login/cadastro </a>
+                    <a class="nav-link" href="login.php" ><i class="bi bi-person"></i> login/cadastro </a>
                 </li>
            
     <a class="nav-link" href="carrinho.php">

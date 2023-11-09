@@ -16,8 +16,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
     <!-- CSS do projeto -->
     <link rel="stylesheet" href="assets/CSS/main_produtos.css" />
-    <link rel="stylesheet" href="assets/CSS/categoria.css" />
+        <link rel="stylesheet" href="assets/CSS/categoria.css" />
 </head>
+
 <body>
     <!-- Plugin de Ver Libras -->
     <div vw class="enabled">
@@ -69,11 +70,12 @@
         </div>
     </div>
 </div><br>
-    <div class="container mt-5">
+<div class="container mt-5">
+    <div class="row">
         <?php
         include 'includes/conexao.php';
         $conn = new Conectar();
-        
+
         $itensPorPagina = 6;
         $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
         $totalProdutos = $conn->query("SELECT COUNT(*) as total FROM produtos")->fetch()['total'];
@@ -85,30 +87,44 @@
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         if ($result) {
-          echo '<div class="row">';
-          foreach ($result as $row) {
-              echo '<div class="col-md-4">';
-              echo '<div class="card mb-4">';
-              echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top" alt="' . $row['nome'] . '">';
-              echo '<div class="card-body">';
-              echo '<h5 class="card-title">' . $row['nome'] . '</h5>';
-              echo '<p class="card-text">' . $row['descricao_imagem'] . '</p>';
-              echo '<p class="card-price">$' . $row['preco'] . '</p>';
-              echo '<form method="post" action="adiciona_ao_carrinho.php">';
-              echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-              echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
-              echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
-              echo '<button class="btn btn-primary" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>';
-              echo '</form>';
-              echo '<button class="btn btn-danger mt-2">❤️ Favorito</button>';
-              echo '</div>';
-              echo '</div>';
-              echo '</div>';
-          }
-          echo '</div>';
+            echo '<div class="row">';
+            foreach ($result as $row) {
+                echo '<div class="col-md-4 mb-4">';
+                echo '<div class="card h-100">';
+                echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top custom-image-size img-fluid" alt="' . $row['nome'] . '" style="width: 500px; height: 500px;">';
+        
+                echo '<div class="card-body d-flex flex-column align-items-center" style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">';
+                echo '<h5 class="card-title mb-2" style="color: #007bff; font-size: 1.5rem; font-weight: bold;">' . $row['nome'] . '</h5>';
+                echo '<p class="card-text mb-3" style="color: #555; font-size: 1rem;">' . $row['descricao_imagem'] . '</p>';
+                echo '<p class="card-price h4" style="color: #28a745; font-size: 1.25rem; margin-bottom: 15px;">$' . $row['preco'] . '</p>';
+        
+                echo '<form method="post" action="adiciona_ao_carrinho.php">';
+                echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
+                echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
+                echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
+                echo '<button type="submit" name="add_to_cart" class="btn btn-primary mt-auto" style="background-color: #808080; border-color: #ffc107;">Adicionar ao Carrinho</button>';
+                echo '</form>';
+        
+                echo '<form method="post" action="favoritar.php">';
+                echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
+                echo '<button type="submit" class="btn btn-success favorite-btn">Favoritar</button>';
+                echo '</form>';
+        
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            echo '</div>';
+        } else {
+            echo '<p class="text-center mt-5">Nenhum produto encontrado.</p>';
+        }
+        ?>
 
-            echo '<nav aria-label="Page navigation">';
-            echo '<ul class="pagination justify-content-center mt-4">';
+        </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-4">
+            <?php
             if ($paginaAtual > 1) {
                 echo '<li class="page-item"><a class="page-link" href="?pagina=' . ($paginaAtual - 1) . '">Anterior</a></li>';
             }
@@ -120,14 +136,11 @@
             if ($paginaAtual < $totalPaginas) {
                 echo '<li class="page-item"><a class="page-link" href="?pagina=' . ($paginaAtual + 1) . '">Próxima</a></li>';
             }
+            ?>
+        </ul>
+    </nav>
+</div>
 
-            echo '</ul>';
-            echo '</nav>';
-        } else {
-            echo '<p class="text-center mt-5">Nenhum produto encontrado.</p>';
-        }
-        ?>
-    </div>
 
     <br><br>
     <?php include 'includes/footer.php'; ?>

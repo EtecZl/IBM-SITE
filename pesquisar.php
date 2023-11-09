@@ -1,167 +1,151 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Completlar - Sua Casa, Seu Estilo.</title>
-    <link rel="shortcut icon" href="assets/assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Completlar - Sua Casa, Seu Estilo.</title>
+        <link rel="shortcut icon" href="assets/assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
 
-    <!-- Google fonts Lato -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+        <!-- Google fonts Lato -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
 
-    <!-- CSS Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <!-- CSS Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
-    <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/main_produtos.css" />
+        <!-- CSS do projeto -->
+        <link rel="stylesheet" href="assets/CSS/main_produtos.css" />
+        <link rel="stylesheet" href="assets/CSS/categoria.css" />
 
-    <!-- JavaScript Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- Plugin de Ver Libras -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
+        <!-- JavaScript Bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!-- Plugin de Ver Libras -->
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
         </div>
-    </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <?php include 'includes/header.php'; ?>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <?php include 'includes/header.php'; ?>
 
-    <div class="container mt-5">
-        <?php
-        // Conecte-se ao banco de dados
-        include 'includes/conexao.php';
-        $conn = new Conectar();
+        <div class="container mt-5">
+    <?php
+    // Conecte-se ao banco de dados
+    include 'includes/conexao.php';
+    $conn = new Conectar();
 
-        // Número de resultados por página
-        $resultadosPorPagina = 6;
+    // Número de resultados por página
+    $resultadosPorPagina = 6;
 
-        // Verifique se a página atual foi especificada na URL
-        $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
+    // Verifique se a página atual foi especificada na URL
+    $paginaAtual = isset($_GET['pagina']) ? $_GET['pagina'] : 1;
 
-        // Verifique se a variável de pesquisa está definida e não está vazia
-        if (isset($_POST['pesquisar']) && !empty($_POST['pesquisar'])) {
-            // Recupere a palavra-chave da barra de pesquisa
-            $pesquisar = $_POST['pesquisar'];
+    // Verifique se a variável de pesquisa está definida e não está vazia
+    if (isset($_POST['pesquisar']) && !empty($_POST['pesquisar'])) {
+        // Recupere a palavra-chave da barra de pesquisa
+        $pesquisar = $_POST['pesquisar'];
 
-            // Calcule o índice inicial
-            $indiceInicial = ($paginaAtual - 1) * $resultadosPorPagina;
+        // Calcule o índice inicial
+        $indiceInicial = ($paginaAtual - 1) * $resultadosPorPagina;
 
-            // Prepare a consulta SQL com a pesquisa aproximada e limitação
-            $query = "SELECT * FROM produtos WHERE nome LIKE :pesquisar OR descricao_imagem LIKE :pesquisar LIMIT :inicio, :quantidade";
-            $stmt = $conn->prepare($query);
-            $stmt->bindValue(':pesquisar', "%$pesquisar%", PDO::PARAM_STR);
-            $stmt->bindValue(':inicio', $indiceInicial, PDO::PARAM_INT);
-            $stmt->bindValue(':quantidade', $resultadosPorPagina, PDO::PARAM_INT);
-            $stmt->execute();
+        // Conte o número total de resultados (sem limitação)
+        $queryCount = "SELECT COUNT(*) as total FROM produtos WHERE nome LIKE :pesquisar OR descricao_imagem LIKE :pesquisar";
+        $stmtCount = $conn->prepare($queryCount);
+        $stmtCount->bindValue(':pesquisar', "%$pesquisar%", PDO::PARAM_STR);
+        $stmtCount->execute();
+        $totalResultados = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
 
-            // Verifique se foram encontrados resultados
-            if ($stmt->rowCount() > 0) {
-                // Inicialize a contagem de colunas
-                $count = 0;
+        // Calcule o número total de páginas
+        $totalPaginas = ceil($totalResultados / $resultadosPorPagina);
 
-                // Exiba os resultados em cards
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    if ($count % 3 == 0) {
-                        // Abre uma nova linha a cada 3 produtos
-                        echo '<div class="row">';
-                    }
+        // Prepare a consulta SQL com a pesquisa aproximada e limitação
+        $query = "SELECT * FROM produtos WHERE nome LIKE :pesquisar OR descricao_imagem LIKE :pesquisar LIMIT :inicio, :quantidade";
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':pesquisar', "%$pesquisar%", PDO::PARAM_STR);
+        $stmt->bindValue(':inicio', $indiceInicial, PDO::PARAM_INT);
+        $stmt->bindValue(':quantidade', $resultadosPorPagina, PDO::PARAM_INT);
+        $stmt->execute();
 
-                    echo '<div class="col-md-4">';
-              echo '<div class="card mb-4">';
-              echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top" alt="' . $row['nome'] . '">';
-              echo '<div class="card-body">';
-              echo '<h5 class="card-title">' . $row['nome'] . '</h5>';
-              echo '<p class="card-text">' . $row['descricao_imagem'] . '</p>';
-              echo '<p class="card-price">$' . $row['preco'] . '</p>';
-              echo '<form method="post" action="adiciona_ao_carrinho.php">';
-              echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-              echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
-              echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
-              echo '<button class="btn btn-primary" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>';
-              echo '</form>';
-              echo '<button class="btn btn-danger mt-2">❤️ Favorito</button>';
-              echo '</div>';
-              echo '</div>';
-              echo '</div>';
+        // Exiba os resultados em cards
+        $count = 0;
 
-                    if ($count % 3 == 2) {
-                        // Fecha a linha a cada 3 produtos
-                        echo '</div>';
-                    }
-
-                    $count++;
-                }
-
-                // Fecha a última linha, se necessário
-                if ($count % 3 != 0) {
-                    echo '</div>';
-                }
-
-                // Crie a interface de paginação
-                echo '<ul class="pagination justify-content-center">';
-                for ($pagina = 1; $pagina <= ceil($stmt->rowCount() / $resultadosPorPagina); $pagina++) {
-                    $classeAtiva = ($pagina == $paginaAtual) ? 'active' : '';
-                    echo '<li class="page-item ' . $classeAtiva . '">';
-                    echo '<a class="page-link" href="?pagina=' . $pagina . '&pesquisar=' . $pesquisar . '">' . $pagina . '</a>';
-                    echo '</li>';
-                }
-                echo '</ul>';
-            } else {
-                // Exiba uma mensagem se nenhum resultado for encontrado
-                echo '<p>Nenhum produto encontrado. Aqui estão algumas opções:</p>';
-                // Consulta para mostrar outras opções de produtos
-                $query = "SELECT * FROM produtos LIMIT 6"; // Você pode ajustar a quantidade de produtos a serem exibidos
-                $stmt = $conn->prepare($query);
-                $stmt->execute();
-
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            if ($count % 3 == 0) {
+                // Abre uma nova linha a cada 3 produtos
                 echo '<div class="row">';
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<div class="col-md-4">';
-                    echo '<div class="card mb-4">';
-                    echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top" alt="' . $row['nome'] . '">';
-                    echo '<div class="card-body">';
-                    echo '<h5 class="card-title">' . $row['nome'] . '</h5>';
-                    echo '<p class="card-text">' . $row['descricao_imagem'] . '</p>';
-                    echo '<p class="card-price">$' . $row['preco'] . '</p>';
-                    echo '<form method="post" action="adiciona_ao_carrinho.php">';
-                    echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-                    echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
-                    echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
-                    echo '<button class="btn btn-primary" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>';
-                    echo '</form>';
-                    echo '<button class="btn btn-danger mt-2">❤️ Favorito</button>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
+            }
+
+            echo '<div class="col-md-4 mb-4">';
+            echo '<div class="card h-100">';
+            echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top custom-image-size img-fluid" alt="' . $row['nome'] . '" style="width: 500px; height: 500px;">';
+
+            echo '<div class="card-body d-flex flex-column align-items-center" style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">';
+            echo '<h5 class="card-title mb-2" style="color: #007bff; font-size: 1.5rem; font-weight: bold;">' . $row['nome'] . '</h5>';
+            echo '<p class="card-text mb-3" style="color: #555; font-size: 1rem;">' . $row['descricao_imagem'] . '</p>';
+            echo '<p class="card-price h4" style="color: #28a745; font-size: 1.25rem; margin-bottom: 15px;">$' . $row['preco'] . '</p>';
+
+            echo '<form method="post" action="adiciona_ao_carrinho.php">';
+            echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
+            echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
+            echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
+            echo '<button type="submit" class="btn btn-primary mt-auto" style="background-color: #808080; border-color: #ffc107; width: 100%;">Adicionar ao Carrinho</button>';
+            echo '</form>';
+
+            echo '<form method="post" action="favoritar.php">';
+            echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
+            echo '<button type="submit" class="btn btn-success mt-2" style="width: 100%;">Favoritar</button>';
+            echo '</form>';
+
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+
+            $count++;
+
+            if ($count % 3 == 0 || $count == $totalResultados) {
+                // Fecha a linha após cada conjunto de 3 produtos ou no último produto
                 echo '</div>';
             }
-        } else {
-            // Exiba uma mensagem se a pesquisa estiver vazia
-            echo '<p>Nenhum resultado encontrado.</p>';
         }
 
-        // Feche o contêiner Bootstrap
-        echo '</div>';
-        ?>
-    </div>
+        // Adicione os botões de navegação entre páginas
+        echo '<div class="row mt-4">';
+        echo '<div class="col">';
+        echo '<nav aria-label="Page navigation">';
+        echo '<ul class="pagination justify-content-center">';
 
-    <br><br>
-    <?php include 'includes/footer.php'; ?>
+        for ($pagina = 1; $pagina <= $totalPaginas; $pagina++) {
+            $classeAtiva = ($pagina == $paginaAtual) ? 'active' : '';
+            echo '<li class="page-item ' . $classeAtiva . '">';
+            echo '<a class="page-link" href="?pagina=' . $pagina . '&pesquisar=' . $pesquisar . '">' . $pagina . '</a>';
+            echo '</li>';
+        }
+
+        echo '</ul>';
+        echo '</nav>';
+        echo '</div>';
+        echo '</div>';
+    } else {
+        echo '<p class="text-center mt-5">Nenhum produto encontrado.</p>';
+    }
+    ?>
+</div>
+
+<br><br>
+<?php include 'includes/footer.php'; ?>
 </body>
 </html>

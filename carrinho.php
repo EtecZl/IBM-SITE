@@ -29,7 +29,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/home_style.css" />
+    <link rel="stylesheet" href="assets/CSS/carrinho.css" />
 	  
     <!-- JavaScript Bootstrap -->
     <script
@@ -37,48 +37,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <style>
-      
-      .parallax-section {
-            background-image: url('assets/Imagens/header/paralax_carrinho.jpg');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 200px;
-            position: relative;
-        }
 
-        .parallax-filter {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .parallax-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Estilos para as etapas */
-        .process-wrap {
-            display: flex;
-            justify-content: space-between;
-        }
-        .process {
-            flex: 1;
-            text-align: center;
-            font-weight: bold;
-        }
-        .process span {
-            display: block;
-        }
-
-
-    </style>
   </head>
 <body>
 

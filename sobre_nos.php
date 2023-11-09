@@ -26,7 +26,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/sobre_nos_style.css" />
+    <link rel="stylesheet" href="assets/CSS/SobreNos.css" />
 	   
     <!-- JavaScript Bootstrap -->
     <script
@@ -48,67 +48,55 @@
 
 
 
+<div class="we-are-block">
+
+<div id="about-us-section">
+
+  <div class="about-us-image">
+
+    <img src="https://digitalupgrade.com/images/lobbyimage_1.jpg" width="808" height="458" alt="Lobby Image">
+
+  </div>
+
+  <div class="about-us-info">
+
+    <h2>Sobre Nós</h2>
+
+    <p>A Completlar é uma empresa dedicada a transformar sonhos em realidade através de móveis planejados e adaptados. Com um compromisso sólido com a excelência e inovação, oferecemos soluções personalizadas para atender às necessidades únicas de cada cliente. Nossa equipe de profissionais qualificados trabalha em estreita colaboração, garantindo que cada projeto seja executado com precisão, do design à instalação. Na Completlar, não apenas vendemos móveis, mas criamos espaços que refletem o estilo e funcionalidade desejados, tornando cada ambiente único e especial. Sua visão, nossa expertise - juntos, criamos lares e escritórios que inspiram.</p>
+
+    <a href="#" title="About Us Button">Sobre Nós</a>
+
+  </div>
+
+</div>
+
+<br>
+<div id="history-section">
+
+  <div class="history-image">
+
+    <img src="https://digitalupgrade.com/images/building_pic.jpg" width="951" height="471" alt="Building Pic">
+
+  </div>
+
+  <div class="history-info">
+
+    <h2>Conheça a nossa Historia</h2>
+
+    <p>A história da Completlar é marcada por uma trajetória de dedicação e paixão pelo design de interiores. Fundada em [ano de fundação], a empresa teve seu início quando [nome do fundador] identificou a necessidade no mercado por móveis personalizados e adaptados que atendessem às demandas específicas dos clientes.
+ </p>
+
+    <a href="#" title="History Button">HISTORIA</a>
+
+  </div>
+
+
   
-  
 
-  <!-- Main Content -->
-  <main class="container mt-5">
-    <div class="row">
-      <!-- Imagem do banner -->
-      <div class="col-md-6">
-        <img src="assets/Imagens/sobre_nos/empresa2.jfif" alt="Banner Sobre Nós" class="img-fluid">
-      </div>
-      <!-- Texto descritivo -->
-      <div class="col-md-6">
-        <h1>Sobre Nós</h1>
-        <p>
-          Somos uma loja de móveis planejados com mais de 10 anos de experiência no mercado. Nossa missão é
-          transformar casas em lares, oferecendo móveis de alta qualidade e design personalizado para cada
-          cliente.
-        </p>
-        <p>
-          Nossos profissionais altamente qualificados trabalham em estreita colaboração com os clientes para
-          entender suas necessidades e criar móveis únicos que se encaixem perfeitamente em seus espaços.
-        </p>
-      </div>
-    </div>
+</div>
 
-    <!-- Cards -->
-    <div class="row mt-5">
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/Imagens/sobre_nos/qualidade.png" alt="Card 1" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Qualidade Garantida</h5>
-            <p class="card-text">Nossos móveis são fabricados com materiais de alta qualidade e durabilidade,
-              garantindo a satisfação dos clientes.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/Imagens/sobre_nos/pro6.jpg" alt="Card 2" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Design Personalizado</h5>
-            <p class="card-text">Cada projeto é feito sob medida para atender às necessidades e preferências de
-              cada cliente, resultando em móveis únicos e exclusivos.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img src="assets/Imagens/sobre_nos/atendimento.jfif" alt="Card 3" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">Atendimento Personalizado</h5>
-            <p class="card-text">Nossa equipe está pronta para ajudá-lo em todas as etapas do processo, desde o
-              projeto até a entrega e instalação.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-
+</div>
+<br>
   <?php include 'includes/footer.php'; ?>
 </body>
 </html>

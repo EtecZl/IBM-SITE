@@ -5,6 +5,8 @@ require_once "includes/conexao.php";
 
 $pdo = new Conectar();
 
+
+
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 } else {
@@ -66,19 +68,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group">
                 <label>Nome de Usuário</label>
-                <input type="text" name="new_username" class="form-control" value="<?php echo $username; ?>">
+                <input type="text" name="new_username" class="form-control" >
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" name="new_email" class="form-control" value="<?php echo $email; ?>">
+                <input type="text" name="new_email" class="form-control" >
             </div>
             <div class="form-group">
                 <label>CEP</label>
-                <input type="text" name="new_cep" class="form-control" value="<?php echo $cep; ?>">
+                <input type="text" name="new_cep" class="form-control">
             </div>
             <div class="form-group">
                 <label>Telefone</label>
-                <input type="text" name="new_telefone" class="form-control" value="<?php echo $telefone; ?>">
+                <input type="text" name="new_telefone" class="form-control" >
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Atualizar">

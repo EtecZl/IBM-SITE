@@ -26,7 +26,9 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/categoria.css" />
+ <!-- CSS do projeto -->
+ <link rel="stylesheet"  type="text/css"  href="assets/CSS/mainProduto.css"/>
+    <link rel="stylesheet"  type="text/css"  href="assets/CSS/categoria.css" />
 	  
     <!-- JavaScript Bootstrap -->
     <script

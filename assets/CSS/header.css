@@ -30,8 +30,7 @@ body, html {
   }
   
   
-  
-
+ 
   body, html {
     background-color: #f7f1f1;
     margin: 0;
@@ -99,7 +98,7 @@ body, html {
   .form-control:focus {
     border-color: #333; /* Cor da borda quando focado */
   }
-  
+
   /* Estilize os ícones nos links de Login e Carrinho */
   .navbar-nav .nav-link i {
   

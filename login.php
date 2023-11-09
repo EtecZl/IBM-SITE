@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $hashed_password = $row["password"];
 
                         if (password_verify($password, $hashed_password)) {
-                            session_start();
+                           
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;

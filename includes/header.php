@@ -48,8 +48,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="produtos.php">Produtos Avulsos</a>
-                            <a class="dropdown-item" href="#">Produtos Personalizados</a>
-
+                         
                             <a class="dropdown-item" href="orçamento.php"> Orçamento</a>
 
 

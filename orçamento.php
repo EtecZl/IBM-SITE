@@ -32,6 +32,60 @@
 
 
 
+    <div class="bg-light">
+  <div class="container py-5">
+    <div class="row h-100 align-items-center py-5">
+      <div class="col-lg-6">
+        <h1 class="display-4">Deseja fazer um Orçamento?</h1>
+        <p class="lead text-muted mb-0">Temos Marceneiros especializados para te Ajudar!</p>
+        
+        <br><br>
+        <p class="font-italic text-muted mb-4">1. Conte o seu projeto de marceneiros e se quiser, inclua fotos.</p>
+        <p class="font-italic text-muted mb-4">2. Profissionais e empresas de marceneiros serão avisados do seu projeto.</p>
+        <p class="font-italic text-muted mb-4">3. Os que se interessarem, entrarão em contato com você..</p>
+
+        <br><br>
+        <button class="btn btn-light px-5 rounded-pill shadow-sm" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Realizar Orçamento </button>
+
+      
+        </p>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block"><img src="assets/Imagens/Orcamento/Marceneiro.png" alt="" class="img-fluid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white py-5">
+  <div class="container py-5">
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+        <h2 class="font-weight-light"></h2>
+        <p class="font-italic text-muted mb-4">O preço médio a ser investido nos trabalhos de um marceneiro podem variar de acordo com uma série de fatores, como, por exemplo, o tipo de madeira a ser utilizada, o tamanho da peça que será fabricada, o acabamento escolhido e a quantidade de serviço, já que alguns profissionais podem fazer um preço melhor caso você feche um pacote para realizar vários trabalhos com ele. Porém, podemos falar em alguns valores médios para os principais serviços realizados por marceneiros:
+
+A diária de contratação de um marceneiro custa entre R$ 350 e R$ 500, dependerá da distância, tipo de trabalho a ser feito e se o profissional trabalha sozinho ou para alguma empresa de marcenaria.
+Móveis sob medida: para fabricar móveis sob medida com madeiras de qualidade, os marceneiros geralmente cobram em torno de R$ 2.500 o m².
+Painel de madeira: no caso de um painel para televisão de até 50 polegadas, incluindo prateleiras nas laterais e na parte de baixo do móvel, o preço médio fica em torno de R$ 2.500.
+Reparar portas: o valor cobrado por esse trabalho geralmente é de R$ 230 por cada porta restaurada, variando conforme o tipo de defeito que a porta apresenta.
+Instalar piso de madeira: o valor cobrado apenas pela instalação é de aproximadamente R$ 90 o m². Caso deseje incluir também os materiais, deverá investir cerca de R$ 400 o m², no caso do assoalho de madeira, ou R$ 350 o m², no caso do parquet.
+Restaurar móvel: o preço médio de um serviço de restauração de móveis é de R$ 400 por cada peça restaurada, podendo variar conforme as condições em que o móvel se encontra.
+Esses preços são apenas uma estimativa geral baseada em valores cobrados pelos principais serviços de marceneiros. Se quiser saber exatamente quanto irá gastar, o ideal é solicitar orçamentos conforme as suas necessidades.</p>
+      </div>
+      <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="assets/Imagens/Orcamento/mulher.png" alt="dupla de marceneiro svg" class="img-fluid"></div>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-lg-5 px-5 mx-auto"><img src="assets/Imagens/Orcamento/dupla.png" alt="dupla de marceneiro svg" class="img-fluid"></div>
+      <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+        <h2 class="font-weight-light">É muito caro?</h2>
+        <p class="font-italic text-muted mb-4">O valor médio cobrado pelos serviços de marcenaria é de R$ 1.800 o m². Para receber um preço compatível com a sua região, peça orçamentos para marceneiros.Dependerá do tamanho do projeto.
+</p>
+
+        <button class="btn btn-light px-5 rounded-pill shadow-sm" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Realizar Orçamento </button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 
@@ -214,7 +268,6 @@
 
 
 
-    <button class="btn btn-primary" data-bs-target="#exampleModalToggle1" data-bs-toggle="modal">Open first modal</button>
 
 
 

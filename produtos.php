@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Completlar - Sua Casa, Seu Estilo</title>
-    <link rel="shortcut icon" href="assets/assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
-    <!-- Google fonts Lato -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet" />
+    <link rel="shortcut icon" href="assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
+    
     <!-- CSS Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/main_produtos.css" />
-        <link rel="stylesheet" href="assets/CSS/categoria.css" />
+    <link rel="stylesheet"  type="text/css"  href="assets/CSS/mainProduto.css"/>
+    <link rel="stylesheet"  type="text/css"  href="assets/CSS/categoria.css" />
+
+
+
 </head>
 
 <body>
@@ -89,26 +90,27 @@
         if ($result) {
             echo '<div class="row">';
             foreach ($result as $row) {
-                echo '<div class="col-md-4 mb-4">';
-                echo '<div class="card h-100">';
-                echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top custom-image-size img-fluid" alt="' . $row['nome'] . '" style="width: 500px; height: 500px;">';
-        
-                echo '<div class="card-body d-flex flex-column align-items-center" style="text-align: center; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">';
-                echo '<h5 class="card-title mb-2" style="color: #007bff; font-size: 1.5rem; font-weight: bold;">' . $row['nome'] . '</h5>';
-                echo '<p class="card-text mb-3" style="color: #555; font-size: 1rem;">' . $row['descricao_imagem'] . '</p>';
-                echo '<p class="card-price h4" style="color: #28a745; font-size: 1.25rem; margin-bottom: 15px;">$' . $row['preco'] . '</p>';
-        
+                echo '<div class="col-md-3">';
+                echo '<div class="card-sl">';
+                
+                echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top custom-image-size img-fluid" alt="' . $row['nome'] . '" style="width: 100vh; height:300px;">';
+         
+                echo '<div class="card-body d-flex flex-column align-items-center" style="text-align: center; padding: 20px;margin:10px; background-color: #f8f9fa;">';
+                echo  '<a class="card-action" href="#"><i class="fa fa-heart"></i></a>';
+                echo '<div class="heading">' . $row['nome'] . '</div>';
+                echo '<div class="card-text">' . $row['descricao_imagem'] . '</div>';
+                echo '<div class="card-price">$' . $row['preco'] . '</div>';
+                
+              
                 echo '<form method="post" action="adiciona_ao_carrinho.php">';
+             
                 echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-                echo '<input type="hidden" name="product_name" value="' . $row['nome'] . '">';
-                echo '<input type="hidden" name="product_price" value="' . $row['preco'] . '">';
-                echo '<button type="submit" name="add_to_cart" class="btn btn-primary mt-auto" style="background-color: #808080; border-color: #ffc107;">Adicionar ao Carrinho</button>';
+                echo '<input class="card-text" type="hidden" name="product_name" value="' . $row['nome'] . '">';
+                echo '<input class="card-text" type="hidden" name="product_price" value="' . $row['preco'] . '">';
+                echo '<button class="card-button" type="submit" name="add_to_cart" >Adicionar ao Carrinho</button>';
                 echo '</form>';
         
-                echo '<form method="post" action="favoritar.php">';
-                echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-                echo '<button type="submit" class="btn btn-success favorite-btn">Favoritar</button>';
-                echo '</form>';
+              
         
                 echo '</div>';
                 echo '</div>';

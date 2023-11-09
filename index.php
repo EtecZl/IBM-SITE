@@ -114,37 +114,37 @@
 <div class="container" id="mobile-icons">
   <div class="row text-center">
     <div class="col-md-2 py-3">
-      <a href="link-para-cadeira">
+      <a href="ProdutosSE.php">
         <img src="assets/Imagens/Home/icons/chair.png" alt="Cadeira">
       </a>
       <h4>Cadeira</h4>
     </div>
     <div class="col-md-2 py-3">
-      <a href="link-para-mesa">
+      <a href="ProdutosSE.php">
         <img src="assets/Imagens/Home/icons/sideboard.png" alt="Mesa">
       </a>
       <h4>Mesa</h4>
     </div>
     <div class="col-md-2 py-3">
-      <a href="link-para-sofa">
+      <a href="ProdutosSE.php">
         <img src="assets/Imagens/Home/icons/sofa.png" alt="Sofá">
       </a>
       <h4>Sofá</h4>
     </div>
     <div class="col-md-2 py-3">
-      <a href="link-para-armario">
+      <a href="ProdutosQ.php">
         <img src="assets/Imagens/Home/icons/kitchen.png" alt="Armário">
       </a>
       <h4>Armário</h4>
     </div>
     <div class="col-md-2 py-3">
-      <a href="link-para-outro-item">
+      <a href="ProdutosQ.php">
         <img src="assets/Imagens/Home/icons/lamp.png" alt="Abajurs">
       </a>
       <h4>Abajur</h4>
     </div>
     <div class="col-md-2 py-3">
-      <a href="link-para-mais-um-item">
+      <a href="ProdutosQ.php">
         <img src="assets/Imagens/Home/icons/nightstand.png" alt="Comodas">
       </a>
       <h4>Comôdas</h4>
@@ -327,7 +327,7 @@
                     <div class="card-body">
                         <h3 class="card-titel text-center">Mesa Escolar</h3>
                         <p class="card-text text-center">R$100</p>
-                        <div id="btn3"><button>Explorar</button></div>
+                        <div id="btn3" ><button>Explorar</button></div>
                     </div>
                 </div>
             </div>

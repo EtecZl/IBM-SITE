@@ -26,7 +26,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
     />
     <!-- CSS do projeto -->
-    <link rel="stylesheet" href="assets/CSS/blog_style.css" />
+    <link rel="stylesheet" href="assets/CSS/blogstyle.css" />
 	 
     <!-- JavaScript Bootstrap -->
     <script

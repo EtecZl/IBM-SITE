@@ -4,29 +4,35 @@ session_start();
 if (isset($_SESSION['username'])) {
     include "includes/conexao.php";
     $pdo = new Conectar();
+    $sql_orcamentos = "SELECT o.nome AS orcamento_nome, l.email AS orcamento_email, o.preco, o.status 
+    FROM orcamentos o
+    INNER JOIN loginclientes l ON o.id = l.id
+    WHERE l.username = :username";
 
-    $sql_orcamentos = "SELECT nome, email, preco, status FROM orcamentos";
+$stmt_orcamentos = $pdo->prepare($sql_orcamentos);
+$stmt_orcamentos->bindParam(":username", $_SESSION['username']);
+$stmt_orcamentos->execute();
 
-    $stmt_orcamentos = $pdo->prepare($sql_orcamentos);
-    $stmt_orcamentos->execute();
+$resultados = $stmt_orcamentos->fetchAll(PDO::FETCH_ASSOC);
 
-    $resultados = $stmt_orcamentos->fetchAll(PDO::FETCH_ASSOC);
+
 } else {
     header("Location: index.php");
     exit;
 }
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Observação de Orçamentos</title>
+    <title>Obeservação de Orçamentos</title>
+    <link lr rel="shortcut icon" href="assets/Imagens/Home/icons/logo.ico" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <?php include "includes/header.php"; ?>
+    
     <br><br>
     <div class="container text-center">
         <h1>Lista de Orçamentos</h1>
@@ -43,6 +49,7 @@ if (isset($_SESSION['username'])) {
                             <strong>Nome de Marceneiro: </strong><?php echo htmlspecialchars($row['nome']); ?><br>
                             <strong>Email do Marceneiro: </strong><?php echo htmlspecialchars($row['email']); ?><br>
                             <strong>Preço Final: </strong><?php echo htmlspecialchars($row['preco']); ?><br>
+                            <strong>Status: </strong><?php echo htmlspecialchars($row['status']); ?><br> <!-- Mostrando o status do orçamento -->
                         </div>
                     </div>
                 </div>
@@ -54,19 +61,8 @@ if (isset($_SESSION['username'])) {
             <button type="submit" class="btn btn-warning">Limpar Orçamentos</button>
         </form>
     </div>
+<a href="MinhaConta.php">Voltar</a>
 
-    <script>
-        // Adicionando um evento de clique ao botão para limpar os orçamentos
-        document.querySelector('button[type="submit"]').addEventListener('click', function(event) {
-            // Previne o envio do formulário padrão para evitar recarregar a página
-            event.preventDefault();
-            
-            // Remove todos os elementos 'accordion' para limpar os orçamentos na tela
-            document.querySelectorAll('.accordion').forEach(function(accordion) {
-                accordion.remove();
-            });
-        });
-    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

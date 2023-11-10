@@ -1,21 +1,25 @@
-<?php 
-if (isset($_POST['aprovar']) && isset($_POST['orcamento_id'])) {
-    $orcamento_id = $_POST['orcamento_id'];
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $orcamentoId = $_POST['orcamento_id'];
+    $novoStatus = $_POST['status'];
 
-    // Atualize o status do pedido para "Aprovado"
-    $sql = "UPDATE orcamentos SET status = 'Aprovado' WHERE id = :orcamento_id";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':orcamento_id', $orcamento_id, PDO::PARAM_INT);
+    try {
+        $conn = new PDO("mysql:host=localhost;dbname=completlar", "root", ""); 
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if ($stmt->execute()) {
-        // Pedido aprovado com sucesso
-        header("Location: minha_conta.php?message=Pedido%20aprovado%20com%20sucesso");
-        exit;
-    } else {
-        // Ocorreu um erro ao atualizar o pedido
-        header("Location: minha_conta.php?message=Erro%20ao%20atualizar%20o%20pedido");
-        exit;
+        $sql = "UPDATE orcamentos SET status = :status WHERE id = :orcamento_id";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':status', $novoStatus);
+        $stmt->bindParam(':orcamento_id', $orcamentoId);
+        $stmt->execute();
+
+        // Redireciona de volta para a página anterior após a atualização
+        header("Location: marceneiro.php");
+        exit();
+    } catch (PDOException $e) {
+        echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
     }
+
+    $conn = null;
 }
 ?>

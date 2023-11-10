@@ -17,6 +17,128 @@
     <link rel="stylesheet"  type="text/css"  href="assets/CSS/categoria.css" />
 
 
+    <style>
+   body {
+    font-family: Varela Round;
+    background: #f1f1f1;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Card Styles */
+
+.card-sl {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-image img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 8px 8px 0px 0;
+}
+
+.card-action {
+    position: relative;
+    float: right;
+    margin-top: -25px;
+    margin-right: 20px;
+    z-index: 2;
+    color: #E26D5C;
+    background: #fff;
+    border-radius: 100%;
+    padding: 15px;
+    font-size: 15px;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action:hover {
+    color: #fff;
+    background: #E26D5C;
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+.card-heading {
+    font-size: 20px;
+    font-weight: bold;
+    background: #fff;
+    padding: 10px 15px;
+}
+
+.card-price {
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 18px;
+    color: #E26D5C; /* Changing the price color to make it more eye-catching */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.card-text {
+    padding: 10px 15px;
+    background: #fff;
+    font-size: 13px;
+    color: #636262;
+}
+
+.card-button {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    width: 100%;
+    background-color: #1F487E;
+    color: #fff;
+    border-radius: 30px;
+    border: none;
+}
+
+.card-button:hover {
+    text-decoration: none;
+    background-color: #1D3461;
+    color: #fff;
+
+}
+.new-label {
+    background-color: #E26D5C;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+@-webkit-keyframes pulse {
+    0% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+    }
+
+    70% {
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+    }
+
+    100% {
+        -moz-transform: scale(0.9);
+        -ms-transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9);
+        box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+    }
+}       
+</style>
 
 </head>
 
@@ -86,43 +208,44 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
         if ($result) {
-            echo '<div class="row">';
             foreach ($result as $row) {
-                echo '<div class="col-md-3">';
-                echo '<div class="card-sl">';
-                
-                echo '<img src="' . $row['caminho_imagem'] . '" class="card-img-top custom-image-size img-fluid" alt="' . $row['nome'] . '" style="width: 100vh; height:300px;">';
-         
-                echo '<div class="card-body d-flex flex-column align-items-center" style="text-align: center; padding: 20px;margin:10px; background-color: #f8f9fa;">';
-                echo  '<a class="card-action" href="#"><i class="fa fa-heart"></i></a>';
-                echo '<div class="heading">' . $row['nome'] . '</div>';
-                echo '<div class="card-text">' . $row['descricao_imagem'] . '</div>';
-                echo '<div class="card-price">$' . $row['preco'] . '</div>';
-                
-              
-                echo '<form method="post" action="adiciona_ao_carrinho.php">';
-             
-                echo '<input type="hidden" name="product_id" value="' . $row['IdProduto'] . '">';
-                echo '<input class="card-text" type="hidden" name="product_name" value="' . $row['nome'] . '">';
-                echo '<input class="card-text" type="hidden" name="product_price" value="' . $row['preco'] . '">';
-                echo '<button class="card-button" type="submit" name="add_to_cart" >Adicionar ao Carrinho</button>';
-                echo '</form>';
-        
-              
-        
-                echo '</div>';
-                echo '</div>';
-                echo '</div>';
+                ?>
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="card">
+                        <div class="card-img-container" style="height: 300px; overflow: hidden;">
+                            <img src="<?php echo $row['caminho_imagem']; ?>" class="card-img-top img-fluid" style="object-fit: cover; height: 100%; width: 100%;" alt="<?php echo $row['nome']; ?>">
+                        </div>
+                        <div class="card-body d-flex flex-column align-items-center" style="min-height: 200px;">
+                        <?php
+                            // Check if the product is new (you might have a field or logic for this)
+                            $is_new = true; // For demonstration, assuming all products are new
+                            if ($is_new) {
+                                echo '<span class="new-label">Novo Produto</span>';
+                            }
+                            ?>
+                            <a class="card-action mb-auto" href="#"><i class="fa fa-heart"></i></a>
+                            <h5 class="card-title"><?php echo $row['nome']; ?></h5>
+                            <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">
+                                <?php echo $row['descricao_imagem']; ?>
+                            </p>
+                            <p class="card-price">R$<?php echo number_format($row['preco'], 2, ',', '.'); ?></p>    
+                            <form method="post" action="adiciona_ao_carrinho.php">
+                                <input type="hidden" name="product_id" value="<?php echo $row['IdProduto']; ?>">
+                                <input type="hidden" name="product_name" value="<?php echo $row['nome']; ?>">
+                                <input type="hidden" name="product_price" value="<?php echo $row['preco']; ?>">
+                                <button class="card-button" type="submit" name="add_to_cart">Adicionar ao Carrinho</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php
             }
-            echo '</div>';
         } else {
             echo '<p class="text-center mt-5">Nenhum produto encontrado.</p>';
         }
         ?>
-
-        </div>
+    </div>
 
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center mt-4">

@@ -84,17 +84,21 @@ document.addEventListener("DOMContentLoaded"), function () {
 
     return true;
   }
+// Seleciona o campo de CEP
+const cepInput = document.getElementById("cepInput");
 
-  // Função de validação do CEP
-  function validateCep(cep) {
-    const cepPattern = /^[0-9]{5}-[0-9]{3}$/;
-    if (!cepPattern.test(cep)) {
-      alert("Por favor, forneça um CEP válido no formato 12345-678.");
-      return false;
-    }
-    return true;
+// Adiciona um listener para o evento de input no campo de CEP
+cepInput.addEventListener("input", function (e) {
+  // Remove todos os caracteres não numéricos
+  const numbersOnly = e.target.value.replace(/\D/g, '');
+
+  // Aplica a máscara no CEP (formato: 12345-678)
+  if (numbersOnly.length > 5) {
+    e.target.value = numbersOnly.slice(0, 5) + '-' + numbersOnly.slice(5, 8);
+  } else {
+    e.target.value = numbersOnly;
   }
-
+});
   // Função de validação do e-mail
   function validateEmail(email) {
     const emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;

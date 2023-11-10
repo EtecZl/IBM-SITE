@@ -222,7 +222,7 @@ Esses preços são apenas uma estimativa geral baseada em valores cobrados pelos
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <label for="additionalDetails">Se desejar, forneça mais detalhes sobre o trabalho:</label>
+            <label for="additionalDetails">Descreve os Móveis como será,como você quer os seus Móveis</label>
             <textarea class="form-control" id="additionalDetails" name="additionalDetails" rows="5" placeholder="Digite seus detalhes aqui..."></textarea>
             <button class="btn btn-primary" data-bs-target="#exampleModalToggle7" data-bs-toggle="modal">Next</button>
             <button class="btn btn-secondary" data-bs-target="#exampleModalToggle5" data-bs-toggle="modal">Previous</button>

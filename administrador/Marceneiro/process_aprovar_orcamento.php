@@ -1,21 +1,27 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $orcamentoId = $_POST['orcamento_id'];
-    $novoStatus = $_POST['status'];
+    $orcamento_id = $_POST["orcamento_id"];
+    $status = $_POST["status"];
+    $price = $_POST["price"];
 
     try {
-        $conn = new PDO("mysql:host=localhost;dbname=completlar", "root", ""); 
+        // Conexão com o banco de dados usando PDO
+        $conn = new PDO("mysql:host=localhost;dbname=completlar", "root", "     ");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "UPDATE orcamentos SET status = :status WHERE id = :orcamento_id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':status', $novoStatus);
-        $stmt->bindParam(':orcamento_id', $orcamentoId);
-        $stmt->execute();
+        // Atualize o status e adicione o preço ao orçamento
+        $stmt = $conn->prepare("UPDATE orcamentos SET status = :status, preco = :preco WHERE id = :orcamento_id");
+        $stmt->bindParam(':status', $status);
+        $stmt->bindParam(':preco', $price);
+        $stmt->bindParam(':orcamento_id', $orcamento_id);
 
-        // Redireciona de volta para a página anterior após a atualização
-        header("Location: marceneiro.php");
-        exit();
+        if ($stmt->execute()) {
+            echo "Orçamento atualizado com sucesso!";
+            header("Location: marceneiro.php");
+            exit();
+        } else {
+            echo "Erro ao atualizar o orçamento.";
+        }
     } catch (PDOException $e) {
         echo "Erro ao conectar ao banco de dados: " . $e->getMessage();
     }

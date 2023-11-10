@@ -78,12 +78,10 @@ include 'includes/header.php';
 include 'includes/conexao.php';
 $conn = new Conectar();
 
-
-// Verifique se o carrinho não está vazio e continue com seu código
 if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
     echo '<div class="container mt-5">';
     echo '<h1>Seu Carrinho de Compras</h1>';
-    echo '<form action="alterar_produto.php" method="post">'; // Formulário para atualizar a quantidade
+
     echo '<table class="table table-bordered">';
     echo '<thead class="table" style="background-color:#f0f0f0;">';
     echo '<tr><th>Detalhes do Produtos</th><th>Imagem Produto</th><th>Preço</th><th>Quantidade</th><th>Subtotal</th><th>Excluir Produtos</th></tr>';
@@ -91,14 +89,10 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
     echo '<tbody>';
 
     $total = 0;
-
-    // Inicialize um array para armazenar os detalhes do carrinho
     $cart = array();
 
     foreach ($_SESSION['carrinho'] as $product_id => $product) {
         echo '<tr>';
-
-        // Busque informações do produto diretamente do banco de dados
         $stmt = $conn->prepare("SELECT nome, caminho_imagem, preco FROM produtos WHERE IdProduto = :product_id");
         $stmt->bindParam(':product_id', $product_id);
         $stmt->execute();
@@ -120,14 +114,14 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
             echo '<td><a href="excluir_produto.php?produto_id=' . $product_id . '" class="btn btn-danger">Excluir</a></td>';
             $total += $subtotal;
 
-            // Crie um item do carrinho com os detalhes do produto
             $item = array(
+                'id' => $product_id,
                 'nome' => $produto['nome'],
                 'imagem' => $produto['caminho_imagem'],
                 'preco' => $produto['preco'],
                 'quantidade' => $product['quantidade'],
             );
-            $cart[] = $item; // Adicione os detalhes do produto ao array do carrinho
+            $cart[] = $item;
         } else {
             echo '<td></td>';
             echo '<td></td>';
@@ -138,10 +132,7 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
         echo '</tr>';
     }
 
-    // Codifique o carrinho como JSON
     $cartJson = json_encode($cart);
-
-    // Armazene o JSON na sessão para que você possa acessá-lo em "checkout.php"
     $_SESSION['cart_json'] = $cartJson;
 
     echo '</tbody>';
@@ -152,7 +143,7 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
     echo '</div>';
     echo '<div class="col-md-6 text-end">';
     echo '<a href="produtos.php" class="btn btn-success">Continuar Comprando</a>';
-    echo '<a class="btn btn-primary" href="checkout.php" style="opacity: 0.5; filter: alpha(opacity=50)"> Proximo </a>';
+    echo '<a class="btn btn-primary" href="checkout.php">Proximo</a>';
     echo '</div>';
     echo '</div>';
     echo '</form>';
@@ -160,34 +151,34 @@ if (isset($_SESSION['carrinho']) && count($_SESSION['carrinho']) > 0) {
 } else {
     echo '<p class="h4 text-center">Seu carrinho está vazio.</p>';
 }
-
-echo '<script>
-    function updateSubtotal(productId, productPrice) {
-        const quantityInput = document.querySelector(\'input[name="quantidade[\'+ productId +\']"]\');
-        const subtotalElement = document.querySelector(\'#subtotal_\'+ productId);
-        const totalElement = document.querySelector(\'#total\');
-        const quantity = parseInt(quantityInput.value, 10);
-        const subtotal = quantity * productPrice;
-        subtotalElement.textContent = \'R$ \' + subtotal.toFixed(2);
-        
-        let newTotal = 0;
-        document.querySelectorAll(\'[id^="subtotal_"]\').forEach(function(subtotal) {
-            newTotal += parseFloat(subtotal.textContent.split(\' \')[1]);
-        });
-        totalElement.textContent = \'R$ \' + newTotal.toFixed(2);
-
-
-        
-    }
-    
-$cart = array();
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $cart[] = $row;
-}
-
-$cartJson = json_encode($cart);'
 ?>
+
+<!-- Adicione aqui todos os links JavaScript, Bootstrap, etc. -->
+<script>
+    function updateSubtotal(product_id, preco) {
+        var quantidadeInput = document.getElementsByName('quantidade[' + product_id + ']')[0];
+        var subtotalElement = document.getElementById('subtotal_' + product_id);
+        var totalElement = document.getElementById('total');
+
+        var novaQuantidade = parseInt(quantidadeInput.value);
+        var novoSubtotal = novaQuantidade * preco;
+
+        subtotalElement.textContent = 'R$ ' + novoSubtotal.toFixed(2);
+
+        var totalAtual = parseFloat(totalElement.textContent.replace('R$ ', ''));
+        var diferencaSubtotal = novoSubtotal - (novaQuantidade - 1) * preco;
+        totalElement.textContent = 'R$ ' + (totalAtual + diferencaSubtotal).toFixed(2);
+
+        var cartJsonInput = document.getElementById('cart_json');
+        var cartJson = JSON.parse(cartJsonInput.value);
+        var produto = cartJson.find(item => item.id == product_id);
+        produto.quantidade = novaQuantidade;
+        cartJsonInput.value = JSON.stringify(cartJson);
+    }
+</script>
+
+
+
 
 
 

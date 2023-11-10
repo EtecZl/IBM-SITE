@@ -272,6 +272,7 @@ CREATE TABLE `orcamentos` (
   `caminho_imagem` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+cliente
 --
 -- Extraindo dados da tabela `orcamentos`
 --
@@ -330,8 +331,38 @@ CREATE TABLE `produtos` (
 --
 -- Índices para tabelas despejadas
 --
-
---
+INSERT INTO `produtos` (`IdProduto`, `nome`, `caminho_imagem`, `descricao_imagem`, `preco`)
+VALUES
+(1, 'Armario Azul', 'assets/Imagens/Produtos/Produtos_Main/Armario Azul.jpg', 'Armário Azul para sua sala de estar', '320.00'),
+(2, 'Armario Pastel', 'assets/Imagens/Produtos/Produtos_Main/Armario Pastel.jpg', 'Armário Pastel para sua sala de estar', '1400.00'),
+(3, 'Armario Planejado', 'assets/Imagens/Produtos/Produtos_Main/Armario Planejado.jpg', 'Armário Planejado para sua sala de estar', '259.99'),
+(4, 'Armario Preto', 'assets/Imagens/Produtos/Produtos_Main/Armario Preto.jpg', 'Armário Preto para sua sala de estar', '800.00'),
+(5, 'Buffet Sala de Jantar', 'assets/Imagens/Produtos/Produtos_Main/Buffet Sala de Jantar.jpg', 'Buffet para Sala de Jantar', '720.00'),
+(6, 'Cadeira Bege', 'assets/Imagens/Produtos/Produtos_Main/Cadeira Bege.jpg', 'Cadeira Bege para sua sala de estar', '1720.00'),
+(7, 'Cadeira Telinha', 'assets/Imagens/Produtos/Produtos_Main/Cadeira Telinha.jpg', 'Cadeira Telinha para sua sala de estar', '2988.99'),
+(8, 'Comoda Azul', 'assets/Imagens/Produtos/Produtos_Main/Comoda Azul.jpg', 'Cômoda Azul para sua sala de estar', '3760.99'),
+(9, 'Comoda Branca', 'assets/Imagens/Produtos/Produtos_Main/Comoda Branca.jpg', 'Cômoda Branca para sua sala de estar', '699.99'),
+(10, 'Comoda Cinza', 'assets/Imagens/Produtos/Produtos_Main/Comoda Cinza.jpg', 'Cômoda Cinza para sua sala de estar', '699.99'),
+(11, 'Comoda Marron', 'assets/Imagens/Produtos/Produtos_Main/Comoda Marron.jpg', 'Cômoda Marrom para sua sala de estar', '699.99'),
+(12, 'Comoda Preta', 'assets/Imagens/Produtos/Produtos_Main/Comoda Preta.jpg', 'Cômoda Preta para sua sala de estar', '699.99'),
+(13, 'Conjunto Planejado Cozinha', 'assets/Imagens/Produtos/Produtos_Main/Conjunto Planejado Cozinha.jpg', 'Conjunto Planejado para Cozinha', '699.99'),
+(14, 'Cozinha planejada com Revestimento 3D preto e móveis planejados escuros', 'assets/Imagens/Produtos/Produtos_Main/Cozinha planejada com Revestimento 3D preto e móveis planejados escuros.jpg', 'Cozinha planejada com Revestimento 3D preto e móveis planejados escuros', '699.99'),
+(15, 'Cozinha planejada na Cor Verde', 'assets/Imagens/Produtos/Produtos_Main/Cozinha planejada na Cor Verde.jpg', 'Cozinha planejada na Cor Verde', '699.99'),
+(16, 'Gabinete Baixo Bege', 'assets/Imagens/Produtos/Produtos_Main/Gabinete Baixo Bege.jpg', 'Gabinete Baixo Bege para sua sala de estar', '699.99'),
+(17, 'Gabinete Baixo', 'assets/Imagens/Produtos/Produtos_Main/Gabinete Baixo.jpg', 'Gabinete Baixo para sua sala de estar', '699.99'),
+(18, 'Gabinite Pia Azul', 'assets/Imagens/Produtos/Produtos_Main/Gabinite Pia Azul.jpg', 'Gabinete para Pia Azul para sua cozinha', '699.99'),
+(19, 'Guarda Roupa Azul', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa Azul.jpg', 'Guarda-Roupa Azul para seu quarto', '699.99'),
+(20, 'Guarda Roupa Cinza', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa Cinza.jpg', 'Guarda-Roupa Cinza para seu quarto', '699.99'),
+(21, 'Guarda Roupa Preto e Marron', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa Preto e Marron.jpg', 'Guarda-Roupa Preto e Marrom para seu quarto', '699.99'),
+(22, 'Guarda Roupa Preto', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa Preto.jpg', 'Guarda-Roupa Preto para seu quarto', '699.99'),
+(23, 'Guarda Roupa Verde', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa Verde.jpg', 'Guarda-Roupa Verde para seu quarto', '699.99'),
+(24, 'Guarda Roupa', 'assets/Imagens/Produtos/Produtos_Main/Guarda Roupa.jpg', 'Guarda-Roupa para seu quarto', '699.99'),
+(25, 'Mesa de Jantar Branca', 'assets/Imagens/Produtos/Produtos_Main/Mesa de Jantar Branca.jpg', 'Mesa de Jantar Branca para sua sala de jantar', '699.99'),
+(26, 'Mesa de Jantar', 'assets/Imagens/Produtos/Produtos_Main/Mesa de Jantar.jpg', 'Mesa de Jantar para sua sala de jantar', '699.99'),
+(27, 'Painel Sala Cinza', 'assets/Imagens/Produtos/Produtos_Main/Painel Sala Cinza.jpg', 'Painel para Sala Cinza para sua sala de estar', '699.99'),
+(28, 'Painel Sala', 'assets/Imagens/Produtos/Produtos_Main/Painel Sala.jpg', 'Painel para Sala para sua sala de estar', '699.99'),
+(29, 'Quarto Planejado', 'assets/Imagens/Produtos/Produtos_Main/Quarto Planejado.jpg', 'Quarto Planejado para seu quarto', '699.99'),
+(30, 'Rack Bege', 'assets/Imagens/Produtos/Produtos_Main/Rack Bege.jpg', 'Rack Bege para sua sala de estar', '699.99');
 -- Índices para tabela `cadastro`
 --
 ALTER TABLE `cadastro`
@@ -362,6 +393,8 @@ ALTER TABLE `categoriasaladeestar`
   ADD PRIMARY KEY (`IdSaladeEstar`);
 
 --
+
+orcamento
 -- Índices para tabela `cliente`
 --
 ALTER TABLE `cliente`
